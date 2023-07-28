@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  selenium-server:
+    image: selenium/standalone-chrome:4.10.0-20230607
+    container_name: selenium-server
+    shm_size: 2gb
+    environment:
+      START_XVFB: true
+    networks:
+      - upwork-scanner-network
+    ports:
+      - '4444:4444'
+    volumes:
+      - ./data/:/data/
+
+networks:
+  upwork-scanner-network:
+    name: upwork-scanner-network
